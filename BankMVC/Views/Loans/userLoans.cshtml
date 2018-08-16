@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BankProject.Loan>
+
+@{
+    ViewBag.Title = "userLoans";
+}
+
+<h2>@Html.DisplayFor(model => model.First().customer.fName)'s Loans</h2>
+@Html.ActionLink("Back to Details", "Details", "Customers", new { id = ViewBag.customerID }, null) |
+@Html.ActionLink("Loan", "Create", "Loans", new { id = ViewBag.customerID }, null) |
+@Html.ActionLink("Term Deposite", "Create", "TermDepos", new { id = ViewBag.customerID }, null)
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.loanID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.customerID == item.customer.customerID)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loanID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.interest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.duration)
+                </td>
+                <td>
+                    @Html.ActionLink("Make Installment", "Payment", new { id = item.loanID })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

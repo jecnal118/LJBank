@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BankProject.bankAccount>
+
+@{
+    ViewBag.Title = "userAccounts";
+}
+
+<h2>Accounts</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.accountID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interest)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.customerID == item.customer.customerID)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accountID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.interest)
+                </td>
+                <td>
+                    @Html.ActionLink("Withdraw", "Withdraw", new { id = item.accountID }) |
+
+                    @Html.ActionLink("Deposit", "Deposit", new { id = item.accountID }) |
+
+                    @Html.ActionLink("Transfer", "Transfer", new { id = item.accountID }) |
+
+                    @Html.ActionLink("Close Account", "Close", new { id = item.accountID })
+                </td>
+            </tr>
+        }
+    }
+
+    @Html.ActionLink("Back to Details", "Details", "Customers", new { id = ViewBag.customerID }, null) |
+    @Html.ActionLink("Loan", "Create", "Loans", new { id = ViewBag.customerID }, null) |
+    @Html.ActionLink("Term Deposite", "Create", "TermDepos", new { id = ViewBag.customerID }, null) |
+    @Html.ActionLink("Recent Transactions", "userTrans", "TransHists", new { id = ViewBag.customerID }, null)
+</table>

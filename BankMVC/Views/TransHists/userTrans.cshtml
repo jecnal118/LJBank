@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BankProject.TransHist>
+
+@{
+    ViewBag.Title = "userTrans";
+}
+
+<h2>Recent Transactions</h2>
+@Html.ActionLink("Back to Details", "Details", "Customers", new { id = ViewBag.customerID }, null) |
+@Html.ActionLink("Loan", "Create", "Loans", new { id = ViewBag.customerID }, null) |
+@Html.ActionLink("Term Deposite", "Create", "TermDepos", new { id = ViewBag.customerID }, null)
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+        </tr>
+    }
+
+</table>

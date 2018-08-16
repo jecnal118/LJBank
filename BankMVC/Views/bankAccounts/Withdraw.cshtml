@@ -1,0 +1,36 @@
+﻿@model BankProject.bankAccount
+
+@{
+    ViewBag.Title = "Withdraw";
+
+}
+@Html.Raw(TempData["msg"])
+<h2>Withdraw</h2>
+
+@using (Html.BeginForm("Withdraw", "bankAccounts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.accountID)
+        <div class="form-group">
+            <h4>
+                Account: @Html.TextBoxFor(model => model.accountID, new { @class = "form-control", @readonly = "true" })
+                Remaining Balance:<br />
+                <strong>@Html.DisplayFor(model => model.balance)</strong><br />
+                Withdraw Amount: <input type="number" name="balance" class="form-control" min="1" /><br />
+                @Html.ValidationMessageFor(model => model.balance, "", new { @class = "text-danger" })
+
+                <input type="submit" value="Withdraw" class="btn btn-default" />
+            </h4>
+            @Html.ActionLink("Back to Accounts", "userAccounts", new { id = Model.customerID })
+        </div>
+
+    </div>
+}
+
+<div>
+   
+</div>

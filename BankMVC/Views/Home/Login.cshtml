@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Lion-J Banking</h1>
+    <p class="lead">Hear at Lion-J we believe in delivering our clients with the best hands-free banking experience.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Accounts", "Index", "Customers")</h2>
+        <p>
+            <ol>
+                <li>Open an account.</li>
+                <li>Check customer records.</li>
+                <li>Perform a withdrawel or deposit</li>
+                <li>Submit a request for a loan or term deposit.</li>
+            </ol>
+
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Transactions", "Index", "TransHists")</h2>
+        <p>Check the banks recent transaction history.</p>
+     </div>
+    <div class="col-md-4">
+        <h2>Submit A Ticket</h2>
+        <p>Run into an issue? Submit a helpdesk ticket and the technical department will get back to you ASAP. While tickets are taken chronologically
+        keep in mind that processing happens in order of importance. So please be patient as we work through all the issues present.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Help &raquo;</a></p>
+    </div>
+</div> 

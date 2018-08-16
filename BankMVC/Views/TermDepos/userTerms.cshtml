@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BankProject.TermDepo>
+
+@{
+    ViewBag.Title = "userTerms";
+}
+
+<h2>userTerms</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.output)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.message)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.interest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.output)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.message)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.termID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.termID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.termID })
+        </td>
+    </tr>
+}
+
+</table>

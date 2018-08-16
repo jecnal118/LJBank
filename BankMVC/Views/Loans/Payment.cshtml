@@ -1,0 +1,38 @@
+﻿@model BankProject.Loan
+
+@{
+    ViewBag.Title = "Payment";
+}
+
+
+<h2>Make A Payment</h2>
+
+@using (Html.BeginForm("Payment", "Loans", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.loanID)
+
+
+        <div class="form-group">
+            Account: @Html.TextBoxFor(model => model.loanID, new { @class = "form-control", @readonly = "true" })
+            Balance Due: @Html.DisplayFor(model => model.amount) <br />
+            Payment amount: <input type="number" name="amount" class="form-control" min="1"/><br />
+            @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+
+            <input type="submit" value="Make Payment" class="btn btn-default" />
+
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Accounts", "userLoans", new { id = Model.customerID })
+</div>
+
+@Html.Raw(TempData["msg"])
+
+

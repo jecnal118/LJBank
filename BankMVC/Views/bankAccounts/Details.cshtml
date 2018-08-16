@@ -1,0 +1,58 @@
+﻿@model BankProject.bankAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>bankAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.interest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.interest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locked)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.accountID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

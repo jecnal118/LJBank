@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BankProject.TransHist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Transaction History</h2>
+<p>
+    @Html.ActionLink("Customers", "Index", "Customers") |
+    @Html.ActionLink("Accounts", "Index", "bankAccounts")
+</p>
+
+@using (Html.BeginForm("Sorted", "TransHists"))
+{
+    <div>
+        <label for="start">From</label>
+        <input type="date" id="start" name="date1" class="form-control" />
+
+        <label for="end">To</label>
+        <input type="date" id="end" name="date2" class="form-control" />
+        <input type="submit" value="Sort" class="btn btn-default" />
+    </div>
+
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.customer.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employee)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderByDescending(t => t.date))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer.fName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employee)
+            </td>
+        </tr>
+    }
+
+</table>

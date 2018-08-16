@@ -1,0 +1,36 @@
+﻿@model BankProject.bankAccount
+
+@{
+    ViewBag.Title = "Close";
+
+}
+
+<h2>Close Account</h2>
+<h3>Are you sure you want to close the following account?</h3>
+
+@using (Html.BeginForm("Close", "bankAccounts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.accountID)
+
+    <div class="form-group">
+        <h4>
+            Account: @Html.TextBoxFor(model => model.accountID, new { @class = "form-control", @readonly = "true" })
+            Current Balance:<br />
+            <strong>@Html.DisplayFor(model => model.balance, new { @class = "form-control", @readonly = "true" }) </strong><br />
+            <p> Please make sure the balance is empty and all associated fees are handled.</p>
+            <input type="submit" value="Close" class="btn btn-default" /><br />
+
+        </h4>
+        @Html.ActionLink("Back to List", "userAccounts", new { id = Model.customerID })
+    </div>
+</div>
+}
+
+<div>
+    
+</div>
